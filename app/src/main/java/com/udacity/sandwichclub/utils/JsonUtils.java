@@ -18,7 +18,7 @@ public class JsonUtils {
 
     // Extract the mainName from the JSON object add it to the Sandwich object
     JSONObject name = root.getJSONObject("name");
-    sandwich.setMainName(name.getString("mainName"));
+    sandwich.setMainName(name.optString("mainName", ""));
 
     // Extract the alsoKnownAs array from the JSON object and parse all the different
     // names to a list og type String add it to the Sandwich object
@@ -30,10 +30,10 @@ public class JsonUtils {
     sandwich.setAlsoKnownAs(alsoKnownAs);
 
     // Extract the placeOfOrigin String and add it to the Sandwich object
-    sandwich.setPlaceOfOrigin(root.getString("placeOfOrigin"));
+    sandwich.setPlaceOfOrigin(root.optString("placeOfOrigin", ""));
 
     // Extract the description String and add it to the Sandwich object
-    sandwich.setDescription(root.getString("description"));
+    sandwich.setDescription(root.optString("description", ""));
 
     // Extract the image String and add it to the Sandwich object
     sandwich.setImage(root.getString("image"));
